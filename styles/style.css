@@ -1,0 +1,404 @@
+/* Font options:
+    font-family: 'Old Standard TT', serif;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Raleway', sans-serif;
+    font-family: 'Ibarra Real Nova', serif;
+*/
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: "Roboto", sans-serif;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgb(0, 0, 0);
+  overflow: hidden;
+}
+
+#main_container {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.logo {
+  width: 150px;
+}
+
+.logo p {
+  margin: 0;
+  padding-top: 1em;
+  padding-left: 2em;
+  font-family: "Raleway", sans-serif;
+  font-size: 2em;
+}
+
+.sidebar_container {
+  position: absolute;
+  top: 0;
+  left: 5%;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+}
+
+.genre {
+  /* font-family: "Ibarra Real Nova", serif; */
+  /* font-size: 1.3em; */
+  padding: 25px 10px;
+}
+
+.genre p {
+  display: inline-block;
+  font-family: "Ibarra Real Nova", serif;
+  font-size: 1.3em;
+  margin: 0;
+  cursor: pointer;
+}
+
+.genre p:hover {
+  color: rgb(255, 255, 255);
+}
+
+.main_content {
+  width: 500px;
+  position: absolute;
+  top: 0;
+  left: 46%;
+}
+
+.top_title {
+  text-align: center;
+  position: relative;
+  top: 0;
+  right: 150px;
+}
+
+.top_title p {
+  font-family: "Ibarra Real Nova", serif;
+  font-size: 1.2em;
+  padding: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+#playlist_container {
+  width: 100%;
+  position: relative;
+  /* transform: translateX(100%) rotate(90deg); */
+  /* transition: opacity 0.75s ease, transform 0.75s ease-in; */
+}
+
+.top10,
+.top20,
+.top30 {
+  position: absolute;
+
+  /* width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.356); */
+
+  opacity: 0;
+  transform: translateX(100%) translateY(20%) rotate(90deg);
+  transition: opacity 0.75s ease, transform 0.75s ease-in;
+}
+
+.playlist_wrapper {
+  display: flex;
+  padding-bottom: 5px;
+}
+
+.playlist {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.playlist_wrapper > div:hover > .art_img {
+  animation: rotate 5s infinite linear reverse;
+}
+
+.playlist_wrapper:nth-child(odd) > div:hover > .art_img {
+  animation: rotate 5s infinite linear normal;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.playlist_wrapper:nth-child(10) .rank {
+  margin-left: -15px;
+}
+
+.rank {
+  font-family: "Old Standard TT", serif;
+  font-size: 1.6em;
+  padding-right: 20px;
+}
+
+.art_img {
+  border: none;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+}
+
+.art_img img {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+}
+
+.music {
+  padding-left: 20px;
+}
+
+.artist,
+.song-title {
+  font-size: 0.9em;
+  margin: 0;
+  padding: 2px;
+}
+
+.song-title {
+  font-style: italic;
+}
+
+.youtube_box {
+  display: none;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+.ytvideo {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+
+#ytplayer {
+  width: 960px;
+  height: 540px;
+}
+
+.closeDiv {
+  position: absolute;
+  top: 15%;
+  right: 20%;
+  font-size: 2.2em;
+  cursor: pointer;
+}
+
+.closeDiv:hover {
+  color: rgb(255, 255, 255);
+}
+
+.rankList {
+  width: 30%;
+  display: flex;
+  justify-content: space-around;
+  position: fixed;
+  bottom: 0;
+  right: 35%;
+}
+
+.rankList p {
+  cursor: pointer;
+  font-family: "Raleway", sans-serif;
+  font-size: 1.2em;
+}
+
+.rankList p:hover {
+  color: rgb(255, 255, 255);
+}
+
+/* Playlist container animation */
+
+.active {
+  opacity: 1;
+  transform: translateX(0) rotate(0deg);
+  transition: opacity 1.5s ease, transform 0.75s ease-in;
+}
+
+.inactive {
+  opacity: 0;
+  transform: translateX(100%) rotate(90deg);
+  transition: opacity 0.75s ease, transform 0.75s ease-in;
+}
+
+/* Selected Genre */
+
+.activeGenre p {
+  color: rgb(255, 255, 255);
+  border-bottom: 1px solid rgb(255, 255, 255);
+}
+
+/* Selected List */
+
+.activeList {
+  color: rgb(255, 255, 255);
+  border-bottom: 1px solid rgb(255, 255, 255);
+}
+
+/* Tablet mode */
+
+@media only screen and (max-width: 1024px) {
+  body {
+    overflow: auto;
+  }
+
+  .main_content {
+    width: 500px;
+    position: absolute;
+    top: 70px;
+    left: 36%;
+  }
+
+  .top_title {
+    display: none;
+  }
+
+  .sidebar_container {
+    width: 100%;
+    left: 0;
+    background: rgb(93, 185, 185);
+    transform: translateX(-100%);
+    transition: transform 300ms cubic-bezier(0.5, 0, 0.5, 1);
+    z-index: 9999;
+  }
+
+  .hamburger_container {
+    position: absolute;
+    top: 2em;
+    right: 0;
+    transform: translateX(100%);
+    padding: 1em 0.5em;
+    border: 0;
+  }
+
+  .hamburger {
+    display: block;
+    position: relative;
+  }
+
+  .hamburger,
+  .hamburger::before,
+  .hamburger::after {
+    width: 2em;
+    height: 3px;
+    background: rgb(255, 255, 255);
+    transition: transform 350ms ease-in-out, opacity 200ms linear;
+  }
+
+  .hamburger::before,
+  .hamburger::after {
+    content: "";
+    position: absolute;
+    left: 0;
+  }
+
+  .hamburger::before {
+    bottom: 6px;
+  }
+  .hamburger::after {
+    top: 6px;
+  }
+
+  /* Navigation open styles */
+
+  .nav-open .sidebar_container {
+    transform: translateX(0);
+  }
+
+  .nav-open .hamburger_container {
+    transform: translateX(-50%);
+  }
+
+  /* Hamburger animation */
+
+  .nav-open .hamburger {
+    transform: rotate(45deg);
+  }
+
+  .nav-open .hamburger::before {
+    opacity: 0;
+  }
+
+  .nav-open .hamburger::after {
+    transform: rotate(90deg) translate(-6px);
+  }
+
+  .ytvideo {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56%;
+    border: 1px solid rgba(11, 233, 59, 0.664);
+  }
+
+  #ytplayer {
+    border: 1px solid red;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .closeDiv {
+    top: -15%;
+    right: 2%;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  #playlist_container {
+    right: 10%;
+  }
+
+  .main_content {
+    width: 430px;
+    top: 100px;
+    left: 15%;
+  }
+
+  .rankList {
+    width: 12%;
+    justify-content: start;
+    flex-direction: column;
+    position: fixed;
+    top: 10px;
+    right: 0;
+    display: inline-block;
+  }
+
+  .rankList p {
+    display: inline-block;
+    margin: 0;
+    padding: 5px 0px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .rankList {
+    width: 20%;
+    top: 10px;
+    right: 5px;
+  }
+}
